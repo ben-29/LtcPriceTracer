@@ -1,6 +1,6 @@
 using Toybox.Application;
 
-class DogecoinApp extends Application.AppBase {
+class LtcPriceTracerApp extends Application.AppBase {
 
     function initialize() {
         AppBase.initialize();
@@ -17,7 +17,7 @@ class DogecoinApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() {
-        return [ new DogecoinView() ];
+        return [ new LtcPriceTracerView() ];
     }
 
 }

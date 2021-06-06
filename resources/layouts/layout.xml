@@ -1,5 +1,5 @@
 <layout id="MainLayout">
-    <bitmap id="dogecoin" x="center" y="dc.getHeight()/8" filename="../drawables/doge.png" />
+    <bitmap id="dogecoin" x="center" y="dc.getHeight()/8" filename="../drawables/litecoin.png" />
     
     <label id="priceLabel" x="center" y="dc.getHeight()*2/5"
 		text=" "

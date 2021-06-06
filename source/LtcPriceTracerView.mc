@@ -4,7 +4,7 @@ using Toybox.Graphics;
 using Toybox.Time;
 using Toybox.Time.Gregorian;
 
-class DogecoinView extends WatchUi.View {
+class LtcPriceTracerView extends WatchUi.View {
 
     hidden var priceLabel;
     hidden var currencyType = "usd";
@@ -13,7 +13,7 @@ class DogecoinView extends WatchUi.View {
     hidden var result;
     hidden var fetchResult = false;
     hidden var networkReachable = false;
-    hidden var priceApi = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=$1$&ids=dogecoin&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h";
+    hidden var priceApi = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=$1$&ids=litecoin&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h";
     hidden var marketDataDict;
     hidden var priceChangePercentage1hKey = "price_change_percentage_1h_in_currency";
     hidden var priceChangePercentage24hKey = "price_change_percentage_24h_in_currency";
@@ -99,6 +99,21 @@ class DogecoinView extends WatchUi.View {
     //     "price_change_percentage_1h_in_currency": 0.6878196956697009,
     //     "price_change_percentage_24h_in_currency": 4.563837247877844
     //   }
+	function paserPriceStr(price) {
+		if(price > 10000) {
+			return price.format("%0.0f");
+		} 
+		if(price > 1000){
+			return price.format("%0.1f");
+		}
+		if(price > 100){
+			return price.format("%0.2f");
+		}
+		if(price > 10){
+			return price.format("%0.3f");
+		}
+		return price.format("%0.4f");
+	}
 
     // Update the view
     function onUpdate(dc) {
@@ -107,7 +122,7 @@ class DogecoinView extends WatchUi.View {
         View.onUpdate(dc);
         if(fetchResult){
             //current price
-            var priceStr = (marketDataDict[currentPriceKey]).format("%0.2f");
+            var priceStr = paserPriceStr(marketDataDict[currentPriceKey]);
             dc.drawText(dc.getWidth()/2,dc.getHeight()/2,
                         Graphics.FONT_NUMBER_THAI_HOT,
                         priceStr,
@@ -119,63 +134,15 @@ class DogecoinView extends WatchUi.View {
             var priceStrDescent = Graphics.getFontDescent(Graphics.FONT_NUMBER_THAI_HOT);
             System.print("priceStrDescent is:"+priceStrDescent);
 
-
-            var changeRate1h = (marketDataDict[priceChangePercentage1hKey]).toFloat();
-            var changeRate24h = (marketDataDict[priceChangePercentage24hKey]).toFloat();
-            System.print("changeRate1h is:"+changeRate1h);
-            System.print("changeRate24h is:"+changeRate24h);
-
-            var oneHStrWidth = dc.getTextWidthInPixels("1H(%)",Graphics.FONT_SYSTEM_XTINY);
-
-            dc.setColor(Graphics.COLOR_WHITE,Graphics.COLOR_TRANSPARENT);
-            dc.drawText(dc.getWidth()/2 - priceStrWidth/2 - oneHStrWidth/2,
-                    dc.getHeight()/2 - xtinyFontHeight + xtinyFontDescent,
-                    Graphics.FONT_SYSTEM_XTINY,
-                    "1H(%)",
-                    Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-
-            var twenty4HStrWidth = dc.getTextWidthInPixels("24H(%)",Graphics.FONT_SYSTEM_XTINY);
-
-            dc.drawText(dc.getWidth()/2 + priceStrWidth/2 + twenty4HStrWidth/2,
-                    dc.getHeight()/2 - xtinyFontHeight + xtinyFontDescent,
-                    Graphics.FONT_SYSTEM_XTINY,
-                    "24H(%)",
-                    Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-            var changeRate1hColor;
-            var changeRate24hColor;
-            if(redUpGreenDown){
-                changeRate1hColor = ChineseUpColorDict[changeRate1h >= 0];
-                changeRate24hColor = ChineseUpColorDict[changeRate24h >= 0];
-            }else{ 
-                changeRate1hColor = ChineseUpColorDict[changeRate1h <= 0];
-                changeRate24hColor = ChineseUpColorDict[changeRate24h<=0];
-            }
-
-            var changeRate1hStr = (changeRate1h>=0?"+":"")+changeRate1h.format("%0.2f");
-            var changeRate1hStrFontWidth = dc.getTextWidthInPixels(changeRate1hStr,Graphics.FONT_SYSTEM_XTINY);
- 
-            dc.setColor(changeRate1hColor,Graphics.COLOR_TRANSPARENT);
-            dc.drawText(dc.getWidth()/2 - priceStrWidth/2 - oneHStrWidth/2 - 5,
-                        dc.getHeight()/2 ,
-                        Graphics.FONT_SYSTEM_XTINY,
-                        changeRate1hStr,
-                        Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-
-            var changeRate24hStr = (changeRate24h>=0?"+":"")+changeRate24h.format("%0.2f");
-            var changeRate24hStrFontWidth = dc.getTextWidthInPixels(changeRate24hStr,Graphics.FONT_SYSTEM_XTINY);
-            dc.setColor(changeRate24hColor,Graphics.COLOR_TRANSPARENT);
-            dc.drawText(dc.getWidth()/2 + priceStrWidth/2 + changeRate24hStrFontWidth/2,
-                        dc.getHeight()/2,
-                        Graphics.FONT_SYSTEM_XTINY,
-                        changeRate24hStr,
-                        Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);                
             
             //currency type
             var currencyTypeStr = currencyType.toUpper();
             var currencyTypeStrWidth = dc.getTextWidthInPixels(currencyTypeStr,Graphics.FONT_SYSTEM_XTINY);
             dc.setColor(Graphics.COLOR_WHITE,Graphics.COLOR_TRANSPARENT);
-            dc.drawText(dc.getWidth()/2 - priceStrWidth/2 - currencyTypeStrWidth/2 - 5,
-                        dc.getHeight()/2 + priceFontHeight/2 - priceStrDescent - xtinyFontHeight/2 + 5,
+//            dc.drawText(dc.getWidth()/2 - priceStrWidth/2 - currencyTypeStrWidth/2 - 5,
+//                        dc.getHeight()/2 + priceFontHeight/2 - priceStrDescent - xtinyFontHeight/2 + 5,
+            dc.drawText(dc.getWidth()/2 + dc.getWidth()/4 + currencyTypeStrWidth/2 - 5,
+                        dc.getHeight()/2 - dc.getHeight()/4 - xtinyFontHeight/2 + 5,
                         Graphics.FONT_SYSTEM_XTINY,
                         currencyTypeStr,
                         Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
@@ -206,6 +173,59 @@ class DogecoinView extends WatchUi.View {
                         Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
             
             fetchResult = false;
+
+			// change 1H & 24H
+            var changeRate1h = (marketDataDict[priceChangePercentage1hKey]).toFloat();
+            var changeRate24h = (marketDataDict[priceChangePercentage24hKey]).toFloat();
+            System.print("changeRate1h is:"+changeRate1h);
+            System.print("changeRate24h is:"+changeRate24h);
+			
+			// text 1H(%)
+            var oneHStrWidth = dc.getTextWidthInPixels("1H(%)",Graphics.FONT_SYSTEM_XTINY);
+            dc.setColor(Graphics.COLOR_WHITE,Graphics.COLOR_TRANSPARENT);
+            dc.drawText(dc.getWidth()/2 - oneHStrWidth/2 -5,
+                    dc.getHeight()/2 + priceFontHeight/2  - priceStrDescent + 10 + xtinyFontHeight + oneHStrWidth/2,
+                    Graphics.FONT_SYSTEM_XTINY,
+                    "1H(%)",
+                    Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+
+			// text 24H(%)
+            var twenty4HStrWidth = dc.getTextWidthInPixels("24H(%)",Graphics.FONT_SYSTEM_XTINY);
+            dc.drawText(dc.getWidth()/2 + twenty4HStrWidth/2 +5,
+                    dc.getHeight()/2 + priceFontHeight/2  - priceStrDescent + 10 + xtinyFontHeight + oneHStrWidth/2,
+                    Graphics.FONT_SYSTEM_XTINY,
+                    "24H(%)",
+                    Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+            var changeRate1hColor;
+            var changeRate24hColor;
+            if(redUpGreenDown){
+                changeRate1hColor = ChineseUpColorDict[changeRate1h >= 0];
+                changeRate24hColor = ChineseUpColorDict[changeRate24h >= 0];
+            }else{ 
+                changeRate1hColor = ChineseUpColorDict[changeRate1h <= 0];
+                changeRate24hColor = ChineseUpColorDict[changeRate24h<=0];
+            }
+
+            // change 1H
+            var changeRate1hStr = (changeRate1h>=0?"+":"")+changeRate1h.format("%0.2f");
+            var changeRate1hStrFontWidth = dc.getTextWidthInPixels(changeRate1hStr,Graphics.FONT_SYSTEM_XTINY);
+ 
+            dc.setColor(changeRate1hColor,Graphics.COLOR_TRANSPARENT);
+            dc.drawText(dc.getWidth()/2 - changeRate1hStrFontWidth/2 -5,
+                        dc.getHeight()/2 + priceFontHeight/2  - priceStrDescent + 10 + xtinyFontHeight*2 + oneHStrWidth/2,
+                        Graphics.FONT_SYSTEM_XTINY,
+                        changeRate1hStr,
+                        Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+
+            // change 24H
+            var changeRate24hStr = (changeRate24h>=0?"+":"")+changeRate24h.format("%0.2f");
+            var changeRate24hStrFontWidth = dc.getTextWidthInPixels(changeRate24hStr,Graphics.FONT_SYSTEM_XTINY);
+            dc.setColor(changeRate24hColor,Graphics.COLOR_TRANSPARENT);
+            dc.drawText(dc.getWidth()/2 + changeRate24hStrFontWidth/2 + 5,
+                        dc.getHeight()/2 + priceFontHeight/2  - priceStrDescent + 10 + xtinyFontHeight*2 + oneHStrWidth/2,
+                        Graphics.FONT_SYSTEM_XTINY,
+                        changeRate24hStr,
+                        Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);                
 
         }else{
             dc.drawText(dc.getWidth()/2,dc.getHeight()/2,
