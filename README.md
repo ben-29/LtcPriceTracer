@@ -9,20 +9,20 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk">
-    <img src="screenshot/doge.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/ben-29/LtcPriceTracer">
+    <img src="screenshot/litecoin.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Dogecoin:To the moon</h3>
+  <h3 align="center">Litecoin</h3>
 
   <p align="center">
-    Dogecoin price on your wrist!
+    Litecoin price on your wrist!
     <br />
     <br />
     ·
-    <a href="https://github.com/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk/issues">Report Bug</a>
+    <a href="https://github.com/ben-29/LtcPriceTracer/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk/issues">Request Feature</a>
+    <a href="https://github.com/ben-29/LtcPriceTracer/issues">Request Feature</a>
     ·
     <a href="https://apps.garmin.com/en-US/apps/c6168ee2-aa5b-42d3-964d-7a891fb8fc12">Connect IQ store</a>
   </p>
@@ -37,11 +37,10 @@
     <li>
       <a href="#about-the-project">About The Project</a>
     </li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#reference">Reference</a></li>
+    <li><a href="#special-thanks">Special thanks</a></li>
 
   </ol>
 </details>
@@ -51,26 +50,14 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Demo][product-screenshot]](https://github.com/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk)
+[![Demo][product-screenshot]](https://github.com/ben-29/LtcPriceTracer)
 
-This is a widget for Garmin watch.
-
-## Roadmap
-
-See the [open issues](https://github.com/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk/issues) for a list of proposed features (and known issues).
-
-
+A widget for Garmin watch. This project is based on [DogecoinToTheMoon](https://github.com/Likenttt/DogecoinToTheMoon).
 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Any Issues / PR is welcomed.
 
 
 
@@ -84,27 +71,25 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Chuanyi - [@KentLee](https://twitter.com/KentLee01607301) - chuanyi@88.com
+ [@ben_29](https://twitter.com/13en_29) - ben_29@live.com
 
-Project Link: [Dogecoin](https://github.com/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk)
+Project Link: [LtcPriceTracer](https://github.com/ben-29/LtcPriceTracer)
 
-## Reference
+## Special thanks
 
-[Price Sign](https://zh.wikipedia.org/zh-cn/%E8%B4%A7%E5%B8%81%E7%AC%A6%E5%8F%B7)
+* [@Likenttt](https://github.com/Likenttt) great repo [DogecoinToTheMoon](https://github.com/Likenttt/DogecoinToTheMoon)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk.svg?style=for-the-badge
-[contributors-url]: https://github.com/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk.svg?style=for-the-badge
-[forks-url]: https://github.com/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk/network/members
-[stars-shield]: https://img.shields.io/github/stars/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk.svg?style=for-the-badge
-[stars-url]: https://github.com/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk.svg?style=for-the-badge
-[issues-url]: https://github.com/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk/issues
-[license-shield]: https://img.shields.io/github/license/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk.svg?style=for-the-badge
-[license-url]: https://github.com/Likenttt/dogecoin-is-flying-to-the-moon-with-dogefather-elon-musk/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: screenshot/dogecoin_break0_4_usd.png
+[contributors-shield]: https://img.shields.io/github/contributors/ben-29/LtcPriceTracer.svg?style=for-the-badge
+[contributors-url]: https://github.com/ben-29/LtcPriceTracer/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ben-29/LtcPriceTracer.svg?style=for-the-badge
+[forks-url]: https://github.com/ben-29/LtcPriceTracer/network/members
+[stars-shield]: https://img.shields.io/github/stars/ben-29/LtcPriceTracer.svg?style=for-the-badge
+[stars-url]: https://github.com/ben-29/LtcPriceTracer/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ben-29/LtcPriceTracer.svg?style=for-the-badge
+[issues-url]: https://github.com/ben-29/LtcPriceTracer/issues
+[license-shield]: https://img.shields.io/github/license/ben-29/LtcPriceTracer.svg?style=for-the-badge
+[license-url]: https://github.com/ben-29/LtcPriceTracer/blob/master/LICENSE.txt
+[product-screenshot]: screenshot/litecoin_cny.png
