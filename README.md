@@ -39,7 +39,6 @@
     </li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#special-thanks">Special thanks</a></li>
 
   </ol>
@@ -52,32 +51,31 @@
 
 [![Demo][product-screenshot]](https://github.com/ben-29/LtcPriceTracer)
 
-A widget for Garmin watch. This project is based on [DogecoinToTheMoon](https://github.com/Likenttt/DogecoinToTheMoon).
+A widget for Garmin watch. 
+
+The price updates every 1 to 10 minutes(server side). Last updated time shows in the field. Data provided by CoinGecko.
+
+This project is based on [DogecoinToTheMoon](https://github.com/Likenttt/DogecoinToTheMoon).
+
+
 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Any Issues / PR is welcomed.
+Any Issue / PR is welcomed.
 
 
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
 
-
-
-<!-- CONTACT -->
-## Contact
-
- [@ben_29](https://twitter.com/13en_29) - ben_29@live.com
-
-Project Link: [LtcPriceTracer](https://github.com/ben-29/LtcPriceTracer)
 
 ## Special thanks
 
 * [@Likenttt](https://github.com/Likenttt) great repo [DogecoinToTheMoon](https://github.com/Likenttt/DogecoinToTheMoon)
+* CoinGecko  for [Free Public API](https://www.coingecko.com/api/documentations/v3#/coins/get_coins_markets)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
