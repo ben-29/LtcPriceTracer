@@ -24,7 +24,7 @@
     ·
     <a href="https://github.com/ben-29/LtcPriceTracer/issues">Request Feature</a>
     ·
-    <a href="https://apps.garmin.com/en-US/apps/c6168ee2-aa5b-42d3-964d-7a891fb8fc12">Connect IQ store</a>
+    <a href="https://apps.garmin.com/en-US/apps/5bf4c236-45f6-47ab-b930-e8e657f5059d">Connect IQ store</a>
   </p>
 </p>
 
@@ -53,7 +53,7 @@
 
 A widget for Garmin watch. 
 
-The price updates every 1 to 10 minutes(server side). Last updated time shows in the field. Data provided by CoinGecko.
+The price updates every 1 to 10 minutes(server side). Last updated time (with how much seconds have past) shows in the field. Data provided by CoinGecko.
 
 This project is based on [DogecoinToTheMoon](https://github.com/Likenttt/DogecoinToTheMoon).
 

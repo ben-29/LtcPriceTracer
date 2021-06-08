@@ -99,6 +99,7 @@ class LtcPriceTracerView extends WatchUi.View {
     //     "price_change_percentage_1h_in_currency": 0.6878196956697009,
     //     "price_change_percentage_24h_in_currency": 4.563837247877844
     //   }
+    
 	function paserPriceStr(price) {
 		if(price > 10000) {
 			return price.format("%0.0f");
@@ -114,13 +115,36 @@ class LtcPriceTracerView extends WatchUi.View {
 		}
 		return price.format("%0.4f");
 	}
+    
+    // converts rfc3339 formatted timestamp to Time::Moment (null on error)
+    function parseISODate(date) {
+        // assert(date instanceOf String)
+
+        // 2011-10-17T16:30:55.000Z
+        // 2011-10-17T16:30:55Z
+        if (date.length() < 20) {
+            return null;
+        }
+
+        var moment = Gregorian.moment({
+            :year => date.substring( 0, 4).toNumber(),
+            :month => date.substring( 5, 7).toNumber(),
+            :day => date.substring( 8, 10).toNumber(),
+            :hour => date.substring(11, 13).toNumber(),
+            :minute => date.substring(14, 16).toNumber(),
+            :second => date.substring(17, 19).toNumber()
+        });
+
+        return moment;
+    }
+    
 
     // Update the view
     function onUpdate(dc) {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
         View.onUpdate(dc);
-        if(fetchResult){
+        if(fetchResult){            
             //current price
             var priceStr = paserPriceStr(marketDataDict[currentPriceKey]);
             dc.drawText(dc.getWidth()/2,dc.getHeight()/2,
@@ -162,17 +186,6 @@ class LtcPriceTracerView extends WatchUi.View {
                         Graphics.FONT_SYSTEM_XTINY,
                         lowest24hString+ (marketDataDict[priceLow24hKey]).format("%0.2f"),
                         Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-            
-            //update time
-            dc.setColor(Graphics.COLOR_WHITE,Graphics.COLOR_TRANSPARENT);
-            var myTime = System.getClockTime(); // ClockTime object
-            dc.drawText(dc.getWidth()/2,
-                        dc.getHeight()/2 + priceFontHeight/2 - priceStrDescent + 10 + xtinyFontHeight,
-                        Graphics.FONT_SYSTEM_XTINY,
-                        updatedString+ myTime.hour.format("%02d") + ":" +myTime.min.format("%02d") + ":" + myTime.sec.format("%02d"),
-                        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-            
-            fetchResult = false;
 
 			// change 1H & 24H
             var changeRate1h = (marketDataDict[priceChangePercentage1hKey]).toFloat();
@@ -225,7 +238,29 @@ class LtcPriceTracerView extends WatchUi.View {
                         dc.getHeight()/2 + priceFontHeight/2  - priceStrDescent + 10 + xtinyFontHeight*2 + oneHStrWidth/2,
                         Graphics.FONT_SYSTEM_XTINY,
                         changeRate24hStr,
-                        Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);                
+                        Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);    
+            
+            //update time
+            dc.setColor(Graphics.COLOR_WHITE,Graphics.COLOR_TRANSPARENT);
+            var lastUpdatedTime = marketDataDict[lastUpdatedTimeKey];
+            //System.println("lastUpdatedTime is:"+lastUpdatedTime);
+            var moment = parseISODate(lastUpdatedTime);
+            //System.println("moment time is:"+moment.value());
+            var now = Time.now().value();
+			var lastUpdate = Gregorian.info(moment, Time.FORMAT_SHORT);
+			var lastUpdateStr = Lang.format("$1$:$2$:$3$ (-$4$s)", [
+			    lastUpdate.hour.format("%02d"),
+			    lastUpdate.min.format("%02d"),
+			    lastUpdate.sec.format("%02d"),
+                now - moment.value()
+			]);
+            dc.drawText(dc.getWidth()/2,
+                        dc.getHeight()/2 + priceFontHeight/2 - priceStrDescent + 10 + xtinyFontHeight,
+                        Graphics.FONT_SYSTEM_XTINY,
+                        updatedString + lastUpdateStr,
+                        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+            
+            fetchResult = false;
 
         }else{
             dc.drawText(dc.getWidth()/2,dc.getHeight()/2,
