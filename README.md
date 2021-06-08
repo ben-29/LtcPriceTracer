@@ -90,4 +90,4 @@ Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information
 [issues-url]: https://github.com/ben-29/LtcPriceTracer/issues
 [license-shield]: https://img.shields.io/github/license/ben-29/LtcPriceTracer.svg?style=for-the-badge
 [license-url]: https://github.com/ben-29/LtcPriceTracer/blob/master/LICENSE.txt
-[product-screenshot]: screenshot/litecoin_cny.png
+[product-screenshot]: screenshot/litecoin_cny_v2.png
