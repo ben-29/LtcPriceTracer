@@ -31,18 +31,12 @@
 
 
 <!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#special-thanks">Special thanks</a></li>
+## Table of Contents
+  1. [About The Project](#about-the-project)
+  1. [Contributing](#contributing)
+  1. [License](#license)
+  1. [Special Thanks](#special-thanks)
 
-  </ol>
-</details>
 
 
 
@@ -72,7 +66,7 @@ Any Issue / PR is welcomed.
 Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
 
 
-## Special thanks
+## Special Thanks
 
 * [@Likenttt](https://github.com/Likenttt) great repo [DogecoinToTheMoon](https://github.com/Likenttt/DogecoinToTheMoon)
 * CoinGecko  for [Free Public API](https://www.coingecko.com/api/documentations/v3#/coins/get_coins_markets)
